@@ -1,0 +1,37 @@
+{% extends 'core/base_generic.html' %}
+
+{% block content %}
+<!--<div class="container mt-5">-->
+    <h1 style="color:blue;text-align:center;">Welcome to the Integrated Financial Management Information System (IFMIS)</h1>
+    <p class style="font-weight:bold;color:rgb(231, 110, 39);text-align:center;lead">Manage Budgets, Accounts, and Treasury all in one place.</p>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Budgets</h5>
+                    <p class="card-text">Manage and track budget allocations and expenditures.</p>
+                    <a href="{% url 'budget_list' %}" class="btn btn-primary">Go to Budgets</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Accounts</h5>
+                    <p class="card-text">Manage financial accounts and general ledger entries.</p>
+                    <a href="{% url 'account_list' %}" class="btn btn-primary">Go to Accounts</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Treasury</h5>
+                    <p class="card-text">Manage cash flows and bank accounts.</p>
+                    <a href="{% url 'bankaccount_list' %}" class="btn btn-primary">Go to Treasury</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+{% endblock %}

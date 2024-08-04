@@ -1,0 +1,22 @@
+{% extends 'core/base_generic.html' %}
+{% block content %}
+  <div class="card">
+      <div class="card-header">
+          <h2>{{ account.name }}</h2>
+      </div>
+      <div class="card-body">
+          <p>Type: {{ account.account_type }}</p>
+          <a href="{% url 'account_update' account.pk %}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+          <form action="{% url 'account_delete' account.pk %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+          </form>
+      </div>
+  </div>
+  <h3 class="mt-4">General Ledger Entries</h3>
+  <ul class="list-group">
+    {% for ledger in ledgers %}
+      <li class="list-group-item">{{ ledger.date }} - {{ ledger.debit }} - {{ ledger.credit }} - {{ ledger.balance }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

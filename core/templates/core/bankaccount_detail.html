@@ -1,0 +1,22 @@
+{% extends 'core/base_generic.html' %}
+{% block content %}
+  <div class="card">
+      <div class="card-header">
+          <h2>{{ account.bank_name }} - {{ account.account_number }}</h2>
+      </div>
+      <div class="card-body">
+          <p>Balance: {{ account.balance }}</p>
+          <a href="{% url 'bankaccount_update' account.pk %}" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+          <form action="{% url 'bankaccount_delete' account.pk %}" method="post" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
+          </form>
+      </div>
+  </div>
+  <h3 class="mt-4">Cash Flows</h3>
+  <ul class="list-group">
+    {% for cashflow in cashflows %}
+      <li class="list-group-item">{{ cashflow.date }} - {{ cashflow.amount }} - {{ cashflow.flow_type }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
